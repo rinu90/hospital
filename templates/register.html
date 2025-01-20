@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register / Sign In</title>
+</head>
+<body>
+    <h1>Patient/Doctor Registration or Sign In</h1>
+
+    <h2>Sign Up</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Patient Sign Up Form -->
+        <h3>Register as Patient</h3>
+        {{ patient_form.as_p }}
+        <button type="submit" name="patient_signup">Sign Up as Patient</button>
+    </form>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Doctor Sign Up Form -->
+        <h3>Register as Doctor</h3>
+        {{ doctor_form.as_p }}
+        <button type="submit" name="doctor_signup">Sign Up as Doctor</button>
+    </form>
+
+    <h2>Sign In</h2>
+    <!-- Redirect to the 'signin' view when clicked -->
+    <a href="{% url 'signin' %}">
+        <button type="button">Sign In</button>
+    </a>
+
+    {% if form.errors %}
+        <p style="color: red;">{{ form.errors }}</p>
+    {% endif %}
+</body>
+</html>
