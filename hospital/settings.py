@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'hospital.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-'default': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',  # Use MySQL
         'NAME': os.getenv('DB_NAME'),          # Database name from environment variable
         'USER': os.getenv('DB_USER'),          # Database user from environment variable
