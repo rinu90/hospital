@@ -26,8 +26,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', views.register, name='register'),
     path('register/', views.register, name='register'),
-    path('select_user/', views.user_type_view, name='user_type'),  # User type selection page
+     
     path('signup/patient/', views.patient_signup_view, name='patient_signup'),
     path('signup/doctor/', views.doctor_signup_view, name='doctor_signup'),
     path('signin/', views.signin_view, name='signin'),
