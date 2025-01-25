@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-wg9oi6b0_a9vwjs^&*rl%)w#6ep8czy6*cbm!^x&r+kvc$xh6#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*.herokuapp.com', '*.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,9 +76,13 @@ WSGI_APPLICATION = 'hospital.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+'default': {
+        'ENGINE': 'django.db.backends.mysql',  # Use MySQL
+        'NAME': os.getenv('DB_NAME'),          # Database name from environment variable
+        'USER': os.getenv('DB_USER'),          # Database user from environment variable
+        'PASSWORD': os.getenv('DB_PASSWORD'),  # Database password from environment variable
+        'HOST': os.getenv('DB_HOST'),          # Database host from environment variable
+        'PORT': os.getenv('DB_PORT', '3306'),  # Default MySQL port
     }
 }
 
