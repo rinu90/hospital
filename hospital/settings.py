@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,15 +75,18 @@ WSGI_APPLICATION = 'hospital.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+load_dotenv()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Use MySQL
         'NAME': os.getenv('DB_NAME'),          # Database name from environment variable
         'USER': os.getenv('DB_USER'),          # Database user from environment variable
         'PASSWORD': os.getenv('DB_PASSWORD'),  # Database password from environment variable
-        'HOST': os.getenv('DB_HOST'),          # Database host from environment variable
-        'PORT': os.getenv('DB_PORT', '3306'),  # Default MySQL port
+        'HOST': os.getenv('DB_HOST', 'localhost'),          # Database host from environment variable
+        'PORT': os.getenv('DB_PORT', '16686'),  # Default MySQL port
+        'OPTIONS': {
+            'ssl': {'ca': '/path/to/ca-cert.pem'}  # Optional, if SSL is required
+                     }
     }
 }
 

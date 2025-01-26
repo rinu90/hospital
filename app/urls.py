@@ -32,7 +32,7 @@ urlpatterns = [
     path('signup/patient/', views.patient_signup_view, name='patient_signup'),
     path('signup/doctor/', views.doctor_signup_view, name='doctor_signup'),
     path('signin/', views.signin_view, name='signin'),
-    path('/dashboard/patient/', views.patient_dashboard_view, name='patient_dashboard'),
+    path('dashboard/patient/', views.patient_dashboard_view, name='patient_dashboard'),
     path('dashboard/doctor/', views.doctor_dashboard_view, name='doctor_dashboard'),
     path('logout/', views.logout_view, name='logout'),
 ]
